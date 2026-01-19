@@ -2,12 +2,125 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Tugas Sekolah 2026</title>
+  <title>Kalkulator Mini</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .calculator {
+      background: #1e1e1e;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      width: 260px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      height: 45px;
+      font-size: 20px;
+      text-align: right;
+      border-radius: 8px;
+      border: none;
+      margin-bottom: 15px;
+      padding-right: 10px;
+    }
+
+    .keys {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      height: 45px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+
+    .number {
+      background: #444;
+      color: white;
+    }
+
+    .operator {
+      background: #ff9800;
+      color: white;
+    }
+
+    .clear {
+      background: #f44336;
+      color: white;
+      grid-column: span 2;
+    }
+
+    .equal {
+      background: #4caf50;
+      color: white;
+      grid-column: span 2;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Website Tugas Sekolah</h1>
-  <p>Nama: Intan</p>
-  <p>Kelas: …</p>
-  <p>Tahun: 2026</p>
+  <div class="calculator">
+    <h2>KALKULATOR MINI</h2>
+    <input type="text" id="display" readonly>
+
+    <div class="keys">
+      <button class="number" onclick="tambah('7')">7</button>
+      <button class="number" onclick="tambah('8')">8</button>
+      <button class="number" onclick="tambah('9')">9</button>
+      <button class="operator" onclick="tambah('/')">÷</button>
+
+      <button class="number" onclick="tambah('4')">4</button>
+      <button class="number" onclick="tambah('5')">5</button>
+      <button class="number" onclick="tambah('6')">6</button>
+      <button class="operator" onclick="tambah('*')">×</button>
+
+      <button class="number" onclick="tambah('1')">1</button>
+      <button class="number" onclick="tambah('2')">2</button>
+      <button class="number" onclick="tambah('3')">3</button>
+      <button class="operator" onclick="tambah('-')">−</button>
+
+      <button class="number" onclick="tambah('0')">0</button>
+      <button class="operator" onclick="tambah('+')">+</button>
+      <button class="equal" onclick="hitung()">=</button>
+      <button class="clear" onclick="hapus()">C</button>
+    </div>
+  </div>
+
+  <script>
+    function tambah(angka) {
+      document.getElementById("display").value += angka;
+    }
+
+    function hitung() {
+      try {
+        document.getElementById("display").value =
+          eval(document.getElementById("display").value);
+      } catch {
+        alert("Input salah");
+      }
+    }
+
+    function hapus() {
+      document.getElementById("display").value = "";
+    }
+  </script>
 </body>
 </html>
